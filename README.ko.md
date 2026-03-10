@@ -1,6 +1,6 @@
-# Plugins for Claude Natives
+# Plugins for Claude Natives (Codex 변환본)
 
-Claude Code의 기능을 확장하고 싶은 파워 유저를 위한 플러그인 모음입니다.
+원본 "Plugins for Claude Natives" 저장소를 Codex 중심 실행 환경에 맞게 조정한 변환본으로, 플러그인 카탈로그는 유지하면서 워크플로우와 문서를 Codex 기준으로 정리했습니다.
 
 ## 목차
 
@@ -265,6 +265,12 @@ Accessibility API를 사용하여 카카오톡 앱을 제어합니다. 자연어
 - macOS 전용
 - 카카오톡 앱 실행 중
 - Accessibility 권한 필요
+- `atomacos` Python 패키지 설치 (`python3 -m pip install atomacos`)
+
+**검증된 워크플로우 상태 (2026-03-10):**
+- `kakao_read.py`가 macOS GUI 자동화로 `🏠집수니♡` 채팅방을 열고 최근 메시지를 읽는 것 확인
+- `kakao_send.py`가 같은 채팅방으로 확인된 메시지를 전송하는 것 확인
+- WindowServer/UI 상태 접근을 위해 기본 sandbox 밖에서 reader/sender를 실행해야 했음
 
 ```
 # 예시 (자연어 트리거)
