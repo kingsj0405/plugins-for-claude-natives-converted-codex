@@ -351,6 +351,12 @@ Uses macOS Accessibility API to control the KakaoTalk app. Send messages or read
 - macOS only
 - KakaoTalk app must be running
 - Accessibility permission required
+- `atomacos` Python package installed (`python3 -m pip install atomacos`)
+
+**Verified workflow status (2026-03-10):**
+- `kakao_read.py` successfully opened `🏠집수니♡` and extracted recent messages via macOS GUI automation
+- `kakao_send.py` successfully delivered a confirmed message to the same chat
+- GUI automation required running the reader/sender outside the default sandbox to access WindowServer/UI state
 
 ```
 # Examples (natural language)
