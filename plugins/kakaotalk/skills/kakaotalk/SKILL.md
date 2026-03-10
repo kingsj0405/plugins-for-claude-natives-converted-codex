@@ -28,7 +28,7 @@ macOS에서 CLI를 통해 카카오톡 메시지를 읽고 보내는 스킬.
 대상 이름으로 채팅방을 열고 대화 내역을 읽습니다:
 
 ```bash
-uv run python .claude/skills/kakaotalk/scripts/kakao_read.py "대상이름" --json
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/kakaotalk/scripts/kakao_read.py" "대상이름" --json
 ```
 
 **출력 예시:**
@@ -56,7 +56,7 @@ uv run python .claude/skills/kakaotalk/scripts/kakao_read.py "대상이름" --js
 
 ### Step 3: 사용자 확인 (필수)
 
-**먼저 텍스트로 메시지 내용을 보여준 후** AskUserQuestion으로 확인:
+**먼저 텍스트로 메시지 내용을 보여준 후** 사용자에게 plain text로 확인:
 
 ```
 [텍스트 출력]
@@ -71,9 +71,8 @@ uv run python .claude/skills/kakaotalk/scripts/kakao_read.py "대상이름" --js
 sent with claude code
 ---
 
-[AskUserQuestion]
-질문: "이 메시지를 보낼까요?"
-옵션: ["보내기", "수정 필요"]
+[확인 질문]
+"이 메시지를 보낼까요? 수정할 내용이 있으면 바로 반영하겠습니다."
 ```
 
 ### Step 4: 발송
@@ -81,7 +80,7 @@ sent with claude code
 사용자 확인 후 메시지 발송:
 
 ```bash
-uv run python .claude/skills/kakaotalk/scripts/kakao_send.py "채팅방이름" "메시지"
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/kakaotalk/scripts/kakao_send.py" "채팅방이름" "메시지"
 ```
 
 ---
@@ -91,7 +90,7 @@ uv run python .claude/skills/kakaotalk/scripts/kakao_send.py "채팅방이름" "
 단순히 대화 내역만 확인할 때:
 
 ```bash
-uv run python .claude/skills/kakaotalk/scripts/kakao_read.py "대상이름" --json
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/kakaotalk/scripts/kakao_read.py" "대상이름" --json
 ```
 
 읽은 후 사용자에게 요약 제공:
@@ -107,30 +106,30 @@ uv run python .claude/skills/kakaotalk/scripts/kakao_read.py "대상이름" --js
 
 ```bash
 # 기본: 채팅방 열고 메시지 읽기
-kakao_read.py "채팅방이름" [--limit N] [--json]
+python3 kakao_read.py "채팅방이름" [--limit N] [--json]
 
 # 채팅 목록
-kakao_read.py --list [--json]
+python3 kakao_read.py --list [--json]
 
 # 검색
-kakao_read.py --search "검색어" [--json]
+python3 kakao_read.py --search "검색어" [--json]
 
 # 읽고 창 닫기
-kakao_read.py "채팅방이름" --close
+python3 kakao_read.py "채팅방이름" --close
 ```
 
 ### kakao_send.py
 
 ```bash
 # 기본 (서명 포함)
-kakao_send.py "채팅방" "메시지"
+python3 kakao_send.py "채팅방" "메시지"
 # → "메시지\n\nsent with claude code"
 
 # 서명 없이
-kakao_send.py "채팅방" "메시지" --no-signature
+python3 kakao_send.py "채팅방" "메시지" --no-signature
 
 # 보내고 창 닫기
-kakao_send.py "채팅방" "메시지" --close
+python3 kakao_send.py "채팅방" "메시지" --close
 ```
 
 ---
@@ -141,7 +140,7 @@ kakao_send.py "채팅방" "메시지" --close
 
 ```
 [Step 1] 채팅방 열고 읽기
-uv run python .../kakao_read.py "구봉" --json
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/kakaotalk/scripts/kakao_read.py" "구봉" --json
 
 [Step 2] 맥락 파악
 최근 대화: 저녁 메뉴 논의 중
@@ -156,6 +155,6 @@ uv run python .../kakao_read.py "구봉" --json
 
 ## 요구사항
 
-1. **atomacos 설치**: `uv add atomacos`
+1. **atomacos 설치**: `python3 -m pip install atomacos`
 2. **Accessibility 권한**: System Settings > Privacy & Security > Accessibility에서 Terminal 허용
 3. **카카오톡 실행**: macOS용 카카오톡 앱 실행 중
