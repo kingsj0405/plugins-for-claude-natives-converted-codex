@@ -1,6 +1,6 @@
-# Plugins for Claude Natives
+# Plugins for Claude Natives (Converted for Codex)
 
-A collection of Claude Code plugins for power users who want to extend Claude Code's capabilities beyond the defaults.
+A Codex-oriented conversion of the original "Plugins for Claude Natives" repository, preserving the plugin catalog while adapting workflows and docs for Codex-based operation.
 
 ## Table of Contents
 
